@@ -2,7 +2,7 @@ let transactions = [];
 filteredTransactionsAfter = { "table": [] }
 let data = []
 let transactionsToDisplay = []
-const endpoint = "http://localhost:8600/";
+const endpoint = "http://44.200.59.13:8600/";
 // const endpoint = "http://192.168.0.123:8600/";
 
 
