@@ -16,7 +16,7 @@ jobs:
     
     - name: build image
       run : |
-      docker build -t manjunadh965/expense:${{ github.sha }} .
+        docker build -t manjunadh965/expense:${{ github.sha }} .
       
 
     - name: docker login 
@@ -30,13 +30,13 @@ jobs:
 
     - name: deployment in ec2
       run: |
-      curl -o $(pwd)/testing.pem ${{ secrets.TEST_URL }}
-      ssh -o StrictHostKeyChecking=no -i testing.pem ubuntu@${{ secrets.EC2_HOST}} << 'EOF'
-        sudo docker pull manjunadh965/expense:${{ github.sha }}
-        sudo docker stop service || true
-        sudo docker rm service || true
-        sudo docker run -d --env-file .env --name service -p 8600:8600 manjunadh965/expense
-      EOF
+        curl -o $(pwd)/testing.pem ${{ secrets.TEST_URL }}
+        ssh -o StrictHostKeyChecking=no -i testing.pem ubuntu@${{ secrets.EC2_HOST}} << 'EOF'
+          sudo docker pull manjunadh965/expense:${{ github.sha }}
+          sudo docker stop service || true
+          sudo docker rm service || true
+          sudo docker run -d --env-file .env --name service -p 8600:8600 manjunadh965/expense
+        EOF
     
     - name: cleaning files
       run: rm -f testing.pem
