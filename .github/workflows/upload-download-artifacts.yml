@@ -42,8 +42,8 @@ jobs:
         with:
           name: homework_final
           path: |
-            math-homework.txt
-            math.txt
+            homework_pre/math-homework.txt
+            homework_pre/math.txt
             
   job_3:
     name: Display results
