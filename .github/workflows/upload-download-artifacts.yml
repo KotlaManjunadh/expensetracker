@@ -34,16 +34,16 @@ jobs:
           ls homework_pre
           cd homework_pre
           value=`cat math-homework.txt`
-          expr $value \* 9 > \a\expensetracker\expensetracker\homework_pre/math-homework.txt
-          value2='cat ~/homework_pre/math2.txt'
-          expr $value2 \* 99 > ~/homework_pre/math2.txt
+          expr $value \* 9 > math-homework.txt
+          value2='cat math2.txt'
+          expr $value2 \* 99 > math2.txt
       - name: Upload math result for job 2
         uses: actions/upload-artifact@v4
         with:
           name: homework_final
           path: |
-            ~/homework_pre/math-homework.txt
-            ~/homework_pre/math2.txt
+            math-homework.txt
+            math2.txt
             
   job_3:
     name: Display results
@@ -58,8 +58,9 @@ jobs:
       - name: Print the final result
         shell: bash
         run: |
-          value=`cat ~/homework_final/math-homework.txt`
+          cd homework_final
+          value=`cat math-homework.txt`
           echo The result is $value
-          value2='cat ~/homework_final/math2.txt'
+          value2='cat math2.txt'
           echo the result is $value2
           
