@@ -32,8 +32,8 @@ jobs:
       - shell: bash
         run: |
           ls homework_pre
-          unzip homework_pre.zip
-          value=`cat ~/homework_pre/math-homework.txt`
+          cd homework_pre
+          value=`cat math-homework.txt`
           expr $value \* 9 > \a\expensetracker\expensetracker\homework_pre/math-homework.txt
           value2='cat ~/homework_pre/math2.txt'
           expr $value2 \* 99 > ~/homework_pre/math2.txt
