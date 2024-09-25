@@ -31,8 +31,8 @@ jobs:
         #   path: .
       - shell: bash
         run: |
-          value=`cat ~/homework_pre/math-homework.txt`
-          expr $value \* 9 > ~/homework_pre/math-homework.txt
+          value=`cat D:\a\expensetracker\expensetracker\homework_pre/math-homework.txt`
+          expr $value \* 9 > \a\expensetracker\expensetracker\homework_pre/math-homework.txt
           value2='cat ~/homework_pre/math2.txt'
           expr $value2 \* 99 > ~/homework_pre/math2.txt
       - name: Upload math result for job 2
