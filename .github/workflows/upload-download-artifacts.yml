@@ -18,8 +18,18 @@ jobs:
           path: |
             math-homework.txt
             math.txt
-
   job_2:
+    name: Add 1 and 2
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: expr 1 + 2 > abc.txt
+      - name: Upload 
+        uses: actions/upload-artifact@v4
+        with:
+          name: homework_pre
+          path: abc.txt
+  job_3:
     name: Multiply by 9
     needs: job_1
     runs-on: windows-latest
@@ -37,6 +47,8 @@ jobs:
           expr $value \* 9 > math-homework.txt
           value2=`cat math.txt`
           expr $value2 \* 99 > math.txt
+          value3=`cat abc.txt`
+          expr $value3 \*9 > abc.txt
       - name: Upload math result for job 2
         uses: actions/upload-artifact@v4
         with:
@@ -44,8 +56,9 @@ jobs:
           path: |
             homework_pre/math-homework.txt
             homework_pre/math.txt
+            homework_pre/abc.txt
             
-  job_3:
+  job_4:
     name: Display results
     needs: job_2
     runs-on: macOS-latest
@@ -63,4 +76,6 @@ jobs:
           echo The result is $value
           value2=`cat math.txt`
           echo the result is $value2
+          value3=`cat abc.txt`
+          echo the result is $value3
           
